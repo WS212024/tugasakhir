@@ -43,7 +43,7 @@ const Card = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/data');
+        const response = await axios.get('https://weatherstation21backend.vercel.app/api/data');
         response.data.map(item => (
           setsuhu(item.temperature.toString()),
           setKelembaban(item.humidity.toString()),
