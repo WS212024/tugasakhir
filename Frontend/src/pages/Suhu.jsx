@@ -14,7 +14,7 @@ const Hujan = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/data');
+        const response = await axios.get('https://weatherstation21backend.vercel.app/api/data');
         
         // Sort the data based on date and time
         const sortedData = response.data.sort((a, b) => {

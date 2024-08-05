@@ -16,7 +16,7 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/data');
+        const response = await axios.get('https://weatherstation21backend.vercel.app/api/data');
         const newData = response.data.map(item => ({
           suhu: item.temperature.toString(),
           kelembaban: item.humidity.toString(),
