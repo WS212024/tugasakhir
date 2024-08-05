@@ -5,12 +5,13 @@ import { IoMdRainy } from "react-icons/io"
 import { TbUvIndex } from "react-icons/tb";
 import { RiDashboard2Line } from "react-icons/ri";
 import { MdAir } from "react-icons/md";
+import { IoSunny } from "react-icons/io5";
 
 
 const Data = [
     {
         id : 1,
-        title :"Main",
+        title :"Beranda",
         icon : <RiDashboard2Line className="text-[#223A59] size-8"/>,
         url : "/"
     },
@@ -49,6 +50,12 @@ const Data = [
         title :"Tekanan Udara",
         icon : <MdAir className="text-[#223A59] size-8"/>,
         url : "/pressure"
+    },
+    {
+        id : 8,
+        title :"LDR",
+        icon : <IoSunny className="text-[#223A59] size-8"/>,
+        url : "/ldr"
     }
 ]
 

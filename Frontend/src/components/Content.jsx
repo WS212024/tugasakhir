@@ -5,7 +5,7 @@ import { Card, Typography } from "@material-tailwind/react";
 const Content =  ({ dataka, datake}) => {
   
   return (
-      <Card  className="w-full overflow-auto h-3/5 bg-transparent shadow-2xl shadow-[#424769]">
+      <Card  className="w-full overflow-auto h-4/5 bg-transparent shadow-2xl shadow-[#424769]">
         <table       
         className="w-full min-w-max table-auto text-left bg-transparent">
           <thead >
@@ -43,12 +43,27 @@ const Content =  ({ dataka, datake}) => {
                 </td>}
                 {isi.kelembaban && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
                   <Typography variant="small" color="black" className="font-raleway font-bold">
-                    {isi.kelembaban+"%"}
+                    {isi.kelembaban}
                   </Typography>
                 </td>}
-                {isi.air && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
+                {isi.ldr && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
                   <Typography variant="small" color="black" className="font-raleway font-bold">
-                    {isi.air}
+                    {isi.ldr}
+                  </Typography>
+                </td>}
+                {isi.uv && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
+                  <Typography variant="small" color="black" className="font-raleway font-bold">
+                    {isi.uv}
+                  </Typography>
+                </td>}
+                {isi.anemo && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
+                  <Typography variant="small" color="black" className="font-raleway font-bold">
+                    {isi.anemo}
+                  </Typography>
+                </td>}
+                {isi.udara && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
+                  <Typography variant="small" color="black" className="font-raleway font-bold">
+                    {isi.udara}
                   </Typography>
                 </td>}
                 {isi.hujan && <td className="p-4 group-hover:bg-[#758ba5] duration-300">

@@ -15,11 +15,6 @@ const Menu = () => {
             </Link>
           ))}
         </div>
-        {/* terpisah dengan yang diatas */}
-        <div className='flex gap-2 items-center  hover:bg-[#738290] duration-500'>
-          <CiLogout className='text-[#223A59] size-8' />
-          <span className='font-raleway font-medium text-[#223A59]'>Log Out</span>
-        </div>
     </div>
   )
 }

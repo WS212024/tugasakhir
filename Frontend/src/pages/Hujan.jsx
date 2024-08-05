@@ -1,87 +1,59 @@
-import React from 'react'
-import Content from '../components/Content'
+import { useEffect, useRef, useState } from 'react'
 import Grafik from '../components/Grafik'
+import Content from '../components/Content'
 import { motion } from "framer-motion"
+import axios from 'axios';
 
 const TABLE_HEAD = ["Tanggal","Waktu", "Curah Hujan",];
 
-const TABLE_ROWS = [
-  {
-    hujan : "22",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "55",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "23",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "12",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "9999",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "12",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  {
-    hujan : "12",
-    waktu : "12.30",
-    tanggal : "12/02/22"
-  },
-  
-];
 
 const Hujan = () => {
+  
+  const [tableRows, setTableRows] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/data');
+        
+        // Sort the data based on date and time
+        const sortedData = response.data.sort((a, b) => {
+          const dateA = new Date(a.date + ' ' + a.time);
+          const dateB = new Date(b.date + ' ' + b.time);
+          return dateB - dateA;
+        });
+        
+        
+        // Extract the top 10 latest entries and map to desired format
+        const newData = sortedData.slice(0, 15).map(item => ({
+          hujan: item.rainfall.toString(),
+          waktu: item.time,
+          tanggal: item.date,
+        }));
+        
+        // Check if the new data differs from the existing data
+        if (JSON.stringify(newData) !== JSON.stringify(tableRows)) {
+          setTableRows([...newData]);
+        }
+        
+        console.log('New Data:', newData);
+        console.log('Table Rows:', tableRows);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+    
+  },[] );  
   return (
     <div className='flex flex-col gap-6 p-4 h-full '>
       {/* Bagian atas */}
       <div className='h-1/3 w-full flex flex-col justify-center items-center gap-3'>
         <span className='font-raleway text-black font-bold text-2xl'>Grafik Curah Hujan</span>
         <Grafik  
-        dataka={TABLE_ROWS} 
+        dataka={tableRows} 
         value={"hujan"}
         x={"waktu"}/>    
       </div>
@@ -92,7 +64,7 @@ const Hujan = () => {
       transition={{ duration:1 , delay:1.5}}         
       className='h-2/3 flex flex-col justify-center items-center gap-3'>
         <span className='font-raleway text-black font-bold text-2xl'>Data Curah Hujan</span>
-        <Content dataka={TABLE_ROWS} datake={TABLE_HEAD} />
+        <Content dataka={tableRows} datake={TABLE_HEAD} />
       </motion.div> 
     </div>
   )

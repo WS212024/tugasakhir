@@ -4,20 +4,26 @@ import Kelembaban from "../assets/kelembaban.png";
 import Uv from "../assets/uv.png";
 import Angin from "../assets/angin.png";
 import Hujan from "../assets/curahHujan1.png";
-import { MdAir } from "react-icons/md";
-import { WiHumidity } from "react-icons/wi";
-import { IoMdRainy } from "react-icons/io"
-import { TbUvIndex } from "react-icons/tb";
-import Gelap from "../assets/gelap.jpeg";
 import Mendung from "../assets/mendung.png";
 import { TbMapWest, TbMapEast, TbMapNorth, TbMapSouth } from "react-icons/tb";
 import { motion } from 'framer-motion';
+import axios from "axios";
 
 const Card = () => {
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   );
   const [currentDay, setCurrentDay] = useState(new Date().toLocaleDateString('id-ID', { weekday: 'long' }));
+  const [suhu, setsuhu] = useState("");
+  const [angin, setAngin] = useState("");
+  const [uv, setUv] = useState("");
+  const [udara, setUdara] = useState("");
+  const [arah, setarah] = useState("");
+  const [hujan, setHujan] = useState("");
+  const [kelembaban, setKelembaban] = useState("");
+  const [anemo, setAnemo] = useState("");
+  
+
 
   const getDirectionIcon = (compass) => {
     switch (compass) {
@@ -33,6 +39,28 @@ const Card = () => {
         return <TbMapNorth className="text-3xl text-gray-500" />;
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/data');
+        response.data.map(item => (
+          setsuhu(item.temperature.toString()),
+          setKelembaban(item.humidity.toString()),
+          setUv(item.ultra.toString()),
+          setUdara(item.pressure.toString()),
+          setAngin(item.wind),
+          setHujan(item.rainfall.toString()),
+          setAnemo(item.anemo.toString())
+          ))
+        // console.log(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   useEffect(() => {
     getDirectionIcon();
@@ -61,7 +89,7 @@ const Card = () => {
         <img src={Mendung} alt="" className="size-24" />
 
         <p className="relative flex gap-1 text-4xl font-bold font-raleway">
-          28{"\u00B0"}<span className="absolute text-2xl left-12 bottom-2">c</span>
+          {suhu}{"\u00B0"}<span className="absolute text-2xl left-12 bottom-2">c</span>
         </p>
       </motion.div>
       {/* kartuMonitor */}
@@ -76,7 +104,7 @@ const Card = () => {
                     <h1 className="font-raleway font-bold text-black text-xl">Kecepatan Angin</h1>
                     <img src={Angin} alt="" className="size-14 p-0" />
                 </div>
-                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> 456 <span className="text-sm text-gray-500">m/s</span></div>
+                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> {anemo} <span className="text-sm text-gray-500">m/s</span></div>
             </motion.div>
             <motion.div 
             initial={{ scale: 0.5, opacity: 0 }}
@@ -87,7 +115,7 @@ const Card = () => {
                     <h1 className="font-raleway font-bold text-black text-xl">Index UV</h1>
                     <img src={Uv} alt="" className="size-14 p-0" />
                 </div>
-                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> 34</div>
+                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> {uv}</div>
             </motion.div>
             <motion.div 
             initial={{ scale: 0.5, opacity: 0 }}
@@ -98,7 +126,7 @@ const Card = () => {
                     <h1 className="font-raleway font-bold text-black text-xl">Tekanan Udara</h1>
                     <img src={Angin} alt="" className="size-14 p-0" />
                 </div>
-                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> 43</div>
+                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> {udara} <span className="text-sm text-gray-500">hPa</span></div>
             </motion.div>
         </div>
         <div className="flex gap-6">
@@ -110,7 +138,7 @@ const Card = () => {
                 <div className="flex px-4 justify-between items-center">
                     <h1 className="font-raleway font-bold text-black text-xl">Arah Angin</h1>
                 </div>
-                <div className="place-self-center pb-3 font-raleway font-bold text-black text-3xl text-gray-500">North</div>
+                <div className="place-self-center pb-3 font-raleway font-bold text-black text-3xl text-gray-500">{angin}</div>
             </motion.div>
         <motion.div 
         initial={{ scale: 0.5, opacity: 0 }}
@@ -121,7 +149,7 @@ const Card = () => {
                     <h1 className="font-raleway font-bold text-black text-xl">Curah Hujan</h1>
                     <img src={Hujan} alt="" className="size-14 p-0" />
                 </div>
-                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> 22<span className="text-sm text-gray-500"> mm</span></div>
+                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> {hujan} <span className="text-sm text-gray-500"> mm</span></div>
             </motion.div>
             <motion.div 
             initial={{ scale: 0.5, opacity: 0 }}
@@ -132,7 +160,7 @@ const Card = () => {
                     <h1 className="font-raleway font-bold text-black text-xl">Kelembaban</h1>
                     <img src={Kelembaban} alt="" className="size-14 p-0" />
                 </div>
-                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> 11<span className="text-sm text-gray-500">%</span></div>
+                <div className="place-self-center pb-3 font-raleway font-bold text-black text-5xl"> {kelembaban} <span className="text-sm text-gray-500">%</span></div>
             </motion.div>
         </div>
       </div>

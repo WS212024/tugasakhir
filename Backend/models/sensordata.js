@@ -5,7 +5,7 @@ const SensorDataSchema = new mongoose.Schema({
   temperature: Number,
   pressure: Number,
   rainfall: Number,
-  wind:Number,
+  wind: { type: String, required: true },
   anemo:Number,
   ldr:Number,
   humidity:Number,

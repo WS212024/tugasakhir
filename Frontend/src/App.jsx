@@ -14,6 +14,7 @@ import Hujan from "./pages/Hujan";
 import Kecepatan from "./pages/Ketinggian";
 import Uv from "./pages/Uv";
 import Pressure from "./pages/Pressure";
+import Ldr from "./pages/Ldr";
 
 function App() {
   
@@ -23,7 +24,7 @@ function App() {
       <Navbar />
       <div className="flex h-full  ">
         {/* bagian kiri */}
-        <div className="w-64 bg-[#fffcf7]  py-1 px-5 h-full border-r-2 border-solid  border-[#b3d6f9] ">
+        <div className="w-64 bg-[#fffcf7] px-5 h-full border-r-2 border-solid  border-[#b3d6f9] overflow-auto">
           <Menu />
         </div>
         {/* bagian kanan */}
@@ -68,6 +69,10 @@ function App() {
         {
           path: "/pressure",
           element: <Pressure />
+        },
+        {
+          path: "/ldr",
+          element: <Ldr />
         },
       ]
     }
