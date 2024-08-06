@@ -54,7 +54,7 @@ const Ldr = () => {
         <span className='font-raleway text-black font-bold text-2xl'>Grafik Ldr</span>
         <Grafik  
         dataka={tableRows} 
-        value={"udara"}
+        value={"ldr"}
         x={"waktu"}/>    
       </div>
       {/* Bagian bawah */}
