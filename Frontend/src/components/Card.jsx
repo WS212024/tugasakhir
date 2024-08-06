@@ -18,27 +18,10 @@ const Card = () => {
   const [angin, setAngin] = useState("");
   const [uv, setUv] = useState("");
   const [udara, setUdara] = useState("");
-  const [arah, setarah] = useState("");
   const [hujan, setHujan] = useState("");
   const [kelembaban, setKelembaban] = useState("");
   const [anemo, setAnemo] = useState("");
   
-
-
-  const getDirectionIcon = (compass) => {
-    switch (compass) {
-      case "North":
-        return <TbMapNorth className="text-3xl text-gray-500" />;
-      case "South":
-        return <TbMapSouth className="text-3xl text-gray-500" />;
-      case "East":
-        return <TbMapEast className="text-3xl text-gray-500" />;
-      case "West":
-        return <TbMapWest className="text-3xl text-gray-500" />;
-      default:
-        return <TbMapNorth className="text-3xl text-gray-500" />;
-    }
-  };
 
   useEffect(() => {
     const fetchData = async () => {
