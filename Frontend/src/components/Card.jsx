@@ -59,7 +59,8 @@ const Card = () => {
 }, []);
 
 useEffect(() => {
-  if (ldr) {
+  if (hujan && ldr) {
+    const hujanValue = parseFloat(hujan);
     const ldrValue = parseFloat(ldr);
     if (ldrValue >= 500) {
       setWeatherImage(Mendung); // Set image for rainy weather
@@ -69,7 +70,7 @@ useEffect(() => {
       setWeatherImage(Terang); // Set default image
     }
   }
-}, []);
+}, [hujan, ldr]);
 
   return (
     <div className="flex py-7  px-2 gap-5 ">
