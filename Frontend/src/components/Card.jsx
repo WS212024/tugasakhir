@@ -70,7 +70,7 @@ useEffect(() => {
       setWeatherImage(Terang); // Set default image
     }
   }
-}, [hujan, ldr]);
+}, []);
 
   return (
     <div className="flex py-7  px-2 gap-5 ">
