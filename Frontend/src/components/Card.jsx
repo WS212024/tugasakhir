@@ -60,9 +60,9 @@ const Card = () => {
 
 useEffect(() => {
   if (hujan && ldr) {
-    if (ldrValue >= 900) {
+    if (ldr >= 900) {
       setWeatherImage(Gelap); // Set image for very dark weather
-    } else if (ldrValue >= 500) {
+    } else if (ldr >= 500) {
       setWeatherImage(Mendung); // Set image for rainy weather
     } else {
       setWeatherImage(Terang); // Set default image
