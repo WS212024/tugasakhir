@@ -59,8 +59,7 @@ const Card = () => {
 }, []);
 
 useEffect(() => {
-  if (hujan && ldr) {
-    const hujanValue = parseFloat(hujan);
+  if (ldr) {
     const ldrValue = parseFloat(ldr);
     if (ldrValue >= 500) {
       setWeatherImage(Mendung); // Set image for rainy weather
