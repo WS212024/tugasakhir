@@ -5,7 +5,6 @@ import Uv from "../assets/uv.png";
 import Angin from "../assets/angin.png";
 import Hujan from "../assets/curahHujan1.png";
 import Mendung from "../assets/mendung.png";
-import { TbMapWest, TbMapEast, TbMapNorth, TbMapSouth } from "react-icons/tb";
 import { motion } from 'framer-motion';
 import axios from "axios";
 
@@ -21,6 +20,7 @@ const Card = () => {
   const [hujan, setHujan] = useState();
   const [kelembaban, setKelembaban] = useState();
   const [anemo, setAnemo] = useState();
+  const [ldr, setLdr] = useState();
   
 
   useEffect(() => {
@@ -34,7 +34,8 @@ const Card = () => {
           setUdara(item.pressure.toString()),
           setAngin(item.wind),
           setHujan(item.rainfall.toString()),
-          setAnemo(item.anemo.toString())
+          setAnemo(item.anemo.toString()),
+          setLdr(item.ldr.toString())
           ))
         // console.log(response.data);
       } catch (error) {
