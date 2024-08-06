@@ -60,8 +60,6 @@ const Card = () => {
 
 useEffect(() => {
   if (hujan && ldr) {
-    const hujanValue = parseFloat(hujan);
-    const ldrValue = parseFloat(ldr);
     if (ldrValue >= 900) {
       setWeatherImage(Gelap); // Set image for very dark weather
     } else if (ldrValue >= 500) {
