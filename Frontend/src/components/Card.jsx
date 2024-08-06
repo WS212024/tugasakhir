@@ -5,6 +5,7 @@ import Uv from "../assets/uv.png";
 import Angin from "../assets/angin.png";
 import Hujan from "../assets/curahHujan1.png";
 import Mendung from "../assets/mendung.png";
+import Gelap from "../assets/bulan.png";
 import { motion } from 'framer-motion';
 import axios from "axios";
 
@@ -64,7 +65,7 @@ useEffect(() => {
     if (ldrValue >= 500) {
       setWeatherImage(Mendung); // Set image for rainy weather
     } else if (ldrValue >= 900){
-      setWeatherImage(Hujan); // Set image for rainy weather      
+      setWeatherImage(Gelap); // Set image for rainy weather      
     } else {
       setWeatherImage(Terang); // Set default image
     }
