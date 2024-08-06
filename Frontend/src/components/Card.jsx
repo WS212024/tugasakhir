@@ -14,13 +14,13 @@ const Card = () => {
     new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   );
   const [currentDay, setCurrentDay] = useState(new Date().toLocaleDateString('id-ID', { weekday: 'long' }));
-  const [suhu, setsuhu] = useState("");
-  const [angin, setAngin] = useState("");
-  const [uv, setUv] = useState("");
-  const [udara, setUdara] = useState("");
-  const [hujan, setHujan] = useState("");
-  const [kelembaban, setKelembaban] = useState("");
-  const [anemo, setAnemo] = useState("");
+  const [suhu, setsuhu] = useState();
+  const [angin, setAngin] = useState();
+  const [uv, setUv] = useState();
+  const [udara, setUdara] = useState();
+  const [hujan, setHujan] = useState();
+  const [kelembaban, setKelembaban] = useState();
+  const [anemo, setAnemo] = useState();
   
 
   useEffect(() => {
@@ -45,9 +45,6 @@ const Card = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    getDirectionIcon();
-  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
