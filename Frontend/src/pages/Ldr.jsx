@@ -4,10 +4,10 @@ import Content from '../components/Content'
 import { motion } from "framer-motion"
 import axios from 'axios';
 
-const TABLE_HEAD = ["Tanggal","Waktu", "Tekanan Udara",];
+const TABLE_HEAD = ["Tanggal","Waktu", "LDR",];
 
 
-const Hujan = () => {
+const Ldr = () => {
   
   const [tableRows, setTableRows] = useState([]);
 
@@ -26,7 +26,7 @@ const Hujan = () => {
         
         // Extract the top 10 latest entries and map to desired format
         const newData = sortedData.slice(0, 15).map(item => ({
-          udara:item.pressure.toString(),
+          ldr:item.ldr.toString(),
           waktu: item.time,
           tanggal: item.date,
         }));
@@ -51,7 +51,7 @@ const Hujan = () => {
     <div className='flex flex-col gap-6 p-4 h-full '>
       {/* Bagian atas */}
       <div className='h-1/3 w-full flex flex-col justify-center items-center gap-3'>
-        <span className='font-raleway text-black font-bold text-2xl'>Grafik Tekanan Udara</span>
+        <span className='font-raleway text-black font-bold text-2xl'>Grafik Ldr</span>
         <Grafik  
         dataka={tableRows} 
         value={"udara"}
@@ -63,11 +63,11 @@ const Hujan = () => {
       animate={{ opacity: 1}}
       transition={{ duration:1 , delay:1.5}}         
       className='h-2/3 flex flex-col justify-center items-center gap-3'>
-        <span className='font-raleway text-black font-bold text-2xl'>Data Tekanan Udara</span>
+        <span className='font-raleway text-black font-bold text-2xl'>Data Ldr</span>
         <Content dataka={tableRows} datake={TABLE_HEAD} />
       </motion.div> 
     </div>
   )
 }
 
-export default Hujan
+export default Ldr
