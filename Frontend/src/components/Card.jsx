@@ -21,6 +21,7 @@ const Card = () => {
   const [kelembaban, setKelembaban] = useState();
   const [anemo, setAnemo] = useState();
   const [ldr, setLdr] = useState();
+  const [weatherImage, setWeatherImage] = useState();
   
 
   useEffect(() => {
@@ -56,6 +57,20 @@ const Card = () => {
     return () => clearInterval(intervalId); // Cleanup interval on component unmount
 }, []);
 
+useEffect(() => {
+  if (hujan && ldr) {
+    const hujanValue = parseFloat(hujan);
+    const ldrValue = parseFloat(ldr);
+    if (ldrValue >= 500) {
+      setWeatherImage(Mendung); // Set image for rainy weather
+    } else if (ldrValue >= 900){
+      setWeatherImage(Hujan); // Set image for rainy weather      
+    } else {
+      setWeatherImage(Terang); // Set default image
+    }
+  }
+}, [hujan, ldr]);
+
   return (
     <div className="flex py-7  px-2 gap-5 ">
       {/* kartu monitoring cuaca */}
@@ -63,11 +78,11 @@ const Card = () => {
       initial={{ scale: 0.5, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center w-48 h-64 rounded-2xl shadow-lg gap-6 py-5 px-2 shadow-[#424769]">
+      className={`flex flex-col items-center justify-center w-48 h-64 rounded-2xl shadow-lg gap-6 py-5 px-2 shadow-[#424769]`}>
         <p className="font-raleway font-bold text-gray-700 text-xl">
           <span className="text-black">{currentDay},</span>{currentTime}
         </p>
-        <img src={Mendung} alt="" className="size-24" />
+        <img src={weatherImage} alt="" className="size-24" />
 
         <p className="relative flex gap-1 text-4xl font-bold font-raleway">
           {suhu}{"\u00B0"}<span className="absolute text-2xl left-12 bottom-2">c</span>
