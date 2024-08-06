@@ -20,7 +20,7 @@ function App() {
   
   const Layout = () => {
     return (
-      <div className="h-screen bg-gray-200 overflow-hidden ">
+      <div className="h-dvh bg-gray-200 overflow-hidden ">
       <Navbar />
       <div className="flex h-full  ">
         {/* bagian kiri */}
