@@ -4,7 +4,7 @@ import Content from '../components/Content'
 import { motion } from "framer-motion"
 import axios from 'axios';
 
-const TABLE_HEAD = ["Tanggal","Waktu", "Curah Hujan",];
+const TABLE_HEAD = ["Tanggal","Waktu", "Indeks UV",];
 
 
 const Hujan = () => {

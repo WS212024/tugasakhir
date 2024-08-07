@@ -39,7 +39,7 @@ const Card = () => {
           setAnemo(item.anemo.toString()),
           setLdr(item.ldr.toString())
           ))
-        // console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error.message);
       }
@@ -84,7 +84,7 @@ useEffect(() => {
         <img src={weatherImage} alt="" className="size-24" />
 
         <p className="relative flex gap-1 text-4xl font-bold font-raleway">
-          {suhu}{"\u00B0"}<span className="absolute text-2xl left-12 bottom-2">c</span>
+          {suhu}{"\u00B0"}
         </p>
       </motion.div>
       {/* kartuMonitor */}

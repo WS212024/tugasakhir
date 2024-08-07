@@ -17,6 +17,7 @@ const Main = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://weatherstation21backend.vercel.app/api/data');
+        console.log(response);
         const newData = response.data.map(item => ({
           suhu: item.temperature.toString(),
           kelembaban: item.humidity.toString(),
@@ -29,7 +30,7 @@ const Main = () => {
           waktu: item.time, 
           tanggal: item.date,
           }))
-        setTablerow(prevRows => [ ...newData]);
+        setTablerow([ ...newData]);
         // console.log(response.data);
       } catch (error) {
         console.log(error.message);
