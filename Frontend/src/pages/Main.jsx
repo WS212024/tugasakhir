@@ -4,7 +4,7 @@ import Content from "../components/Content";
 import { motion } from "framer-motion"
 import axios from 'axios';
 
-const TABLE_HEAD = ["Tanggal", "Waktu", "Suhu", "Kelembaban", "LDR", "UV", "Kecepatan Angin", "Tekanan Udara", "Curah Hujan"];
+const TABLE_HEAD = ["Tanggal", "Waktu", "Suhu", "Kelembaban","Arah Angin" , "LDR", "UV", "Kecepatan Angin", "Tekanan Udara", "Curah Hujan"];
 
 const Main = () => {
   const [tablerow, setTablerow] = useState([]);

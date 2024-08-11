@@ -46,6 +46,11 @@ const Content =  ({ dataka, datake}) => {
                     {isi.kelembaban}
                   </Typography>
                 </td>}
+                {isi.angin && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
+                  <Typography variant="small" color="black" className="font-raleway font-bold">
+                    {isi.angin}
+                  </Typography>
+                </td>}
                 {isi.ldr && <td className="p-4 group-hover:bg-[#758ba5] duration-300">
                   <Typography variant="small" color="black" className="font-raleway font-bold">
                     {isi.ldr}
